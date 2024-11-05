@@ -55,7 +55,7 @@ static async todos(req: Request, res: Response): Promise<any> {
     * @throws {Error} - Se ocorrer um erro durante o processo de cadastro, uma mensagem é exibida no console e uma 
     *                   resposta HTTP 400 com uma mensagem de erro é enviada ao cliente.
     */
-static async novo(req: Request, res: Response): Promise<Response> {
+static async novo(req: Request, res: Response): Promise<any> {
     try {
         // recuperando informações do corpo da requisição e colocando em um objeto da interface CarroDTO
         const EmprestimoRecebido: EmprestimoDTO = req.body;
