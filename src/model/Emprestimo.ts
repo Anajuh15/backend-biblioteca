@@ -1,7 +1,12 @@
+import { DatabaseModel } from "./DatabaseModel";
+
+// armazenei o pool de conexões
+const database = new DatabaseModel().pool;
+
 /**
  * Classe que gerencia os empréstimos de livros.
  */
-export class Emprestimos {
+export class Emprestimo {
 
     /* Atributos */
     /* Identificador do empréstimo */
@@ -137,4 +142,89 @@ export class Emprestimos {
     public setStatusEmprestimo(statusEmprestimo: string): void {
         this.statusEmprestimo = statusEmprestimo;
     }
+
+ /**
+     * Busca e retorna uma lista de emprestimolistaDeEmprestimo de emprestimo do banco de dados.
+     * @returns Um array de objetos do tipo emprestimo em caso de sucesso ou null se ocorrer um erro durante a consulta.
+     * 
+     * - A função realiza uma consulta SQL para obter todos os registros da tabela "Emprestimo".
+     * - Os dados retornados são utilizados para instanciar objetos da classe Emprestimo.
+     * - Cada pedido de venda instanciado é adicionado a uma lista que será retornada ao final da execução.
+     * - Caso ocorra uma falha na consulta ao banco, a função captura o erro, exibe uma mensagem no console e retorna null.
+     */
+ static async listagemEmprestimo(): Promise<Array<Emprestimo> | null> {
+    const listaDeEmprestimo: Array<Emprestimo> = [];
+
+    try {
+        const querySelectemprestimolistaDeEmprestimo = `SELECT * FROM emprestimo`;
+        const respostaBD = await database.query(querySelectemprestimolistaDeEmprestimo);
+
+        respostaBD.rows.forEach((linha: any) => {
+            const novoPedidoEmprestimo = new Emprestimo(
+                linha.id_livro,
+                linha.id_aluno,
+                linha.id_emprestimo,
+                linha.data_emprestimo,
+                linha.data_devolucao,);
+
+            novoPedidoEmprestimo.setIdEmprestimo(linha.id_emprestimo);
+
+            listaDeEmprestimo.push(novoPedidoEmprestimo);
+        });
+
+        return listaDeEmprestimo;
+    } catch (error) {
+        console.log('Erro ao buscar lista de emprestimolistaDeEmprestimo');
+        return null;
+    }
 }
+/**
+ * Realiza o cadastro de pedido no banco de dados.
+ * 
+ * Esta função recebe um objeto do tipo Pedido e insere seus dados (idlivro,idaluno,dataPedido,valorPedido)
+ * na tabela emprestimos do banco de dados. O método retorna um valor booleano indicando se o cadastro 
+ * foi realizado com sucesso.
+ * 
+ * @param {emprestimo} pedido_venda - Objeto contendo os dados do pedido que será cadastrado. O objeto emprestimo
+ *                        deve conter os métodos getIdlivro(), getIdaluno(), getDatapedido(),`getValorPedido` 
+ *                        que retornam os respectivos valores do aluno.
+ * @returns {Promise<boolean>} - Retorna true se o pedido foi cadastrado com sucesso e false caso contrário.
+ *                               Em caso de erro durante o processo, a função trata o erro e retorna false.
+ * 
+ * @throws {Error} - Se ocorrer algum erro durante a execução do cadastro, uma mensagem de erro é exibida
+ *                   no console junto com os detalhes do erro.
+ */
+static async cadastroemprestimo(emprestimo: Emprestimo): Promise<boolean> {
+try {
+    // query para fazer insert de um livro no banco de dados
+    const queryInsertemprestimo = `INSERT INTO livro (nome, cpf, telefone)
+                                VALUES
+                                (${emprestimo.getIdAluno()}, 
+                                ${emprestimo.getIdLivro()},
+                                ${emprestimo.getDataEmprestimo()}, 
+                                RETURNING id_aluno;`;
+
+    // executa a query no banco e armazena a resposta
+    const respostaBD = await database.query(queryInsertemprestimo);
+
+    // verifica se a quantidade de linhas modificadas é diferente de 0
+    if (respostaBD.rowCount != 0) {
+        console.log('Pedido cadastrado com sucesso! ID do pedido: ${respostaBD.rows[0].id_pedido}');
+        // true significa que o cadastro foi feito
+        return true;
+    }
+    // false significa que o cadastro NÃO foi feito.
+    return false;
+
+    // tratando o erro
+} catch (error) {
+    // imprime outra mensagem junto com o erro
+    console.log('Erro ao cadastrar o aluno. Verifique os logs para mais detalhes.');
+    // imprime o erro no console
+    console.log(error);
+    // retorno um valor falso
+    return false;
+}
+}
+}
+    
