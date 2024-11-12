@@ -23,7 +23,6 @@ export class Aluno {
     private email: string;
     /* Celular do Aluno */
     private celular: string;
-    getCpf: any;
 
     /**
      * Construtor da classe Aluno
@@ -235,7 +234,7 @@ export class Aluno {
         const queryInsertaluno = `INSERT INTO carro (nome, cpf, celular)
                                     VALUES
                                     ('${aluno.getNome()}', 
-                                    ${aluno.getCpf()}, 
+                                    ${aluno.getNome()}, 
                                     ${aluno.getCelular()}, 
                                     RETURNING id_aluno;`;
 
