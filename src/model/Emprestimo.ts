@@ -197,12 +197,14 @@ export class Emprestimo {
 static async cadastroemprestimo(emprestimo: Emprestimo): Promise<boolean> {
 try {
     // query para fazer insert de um livro no banco de dados
-    const queryInsertemprestimo = `INSERT INTO livro (nome, cpf, telefone)
+    const queryInsertemprestimo = `INSERT INTO Emprestimo (id_aluno, id_livro, id_Emprestimo, data_emprestimo, data_devolucao)
                                 VALUES
-                                (${emprestimo.getIdAluno()}, 
-                                ${emprestimo.getIdLivro()},
-                                ${emprestimo.getDataEmprestimo()}, 
-                                RETURNING id_aluno;`;
+                                ('${emprestimo.getIdAluno()}', 
+                                '${emprestimo.getIdLivro()}',
+                                '${emprestimo.getIdEmprestimo()}',
+                                '${emprestimo.getDataEmprestimo}',
+                                '${emprestimo.getDataDevolucao}), 
+                                RETURNING id_emprestimo;`;
 
     // executa a query no banco e armazena a resposta
     const respostaBD = await database.query(queryInsertemprestimo);

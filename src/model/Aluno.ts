@@ -194,11 +194,11 @@ export class Aluno {
             respostaBD.rows.forEach((linha:any) => {
                 const novoaluno = new Aluno(
                     linha.nome,
-                    linha.cpf,
-                    linha.celular,
+                    linha.sobrenome,
+                    linha.dataNascimento,
                     linha.endereco,
                     linha.email,
-                    linha.dataNascimento,);
+                    linha.celular,);
 
                 novoaluno.setIdAluno(linha.id_aluno);
 
@@ -231,11 +231,14 @@ export class Aluno {
  static async cadastroAluno(aluno: Aluno): Promise<boolean> {
     try {
         // query para fazer insert de um carro no banco de dados
-        const queryInsertaluno = `INSERT INTO carro (nome, cpf, celular)
+        const queryInsertaluno = `INSERT INTO Aluno (nome, sobrenome, data_nascimento, endereco, email, celular)
                                     VALUES
                                     ('${aluno.getNome()}', 
-                                    ${aluno.getNome()}, 
-                                    ${aluno.getCelular()}, 
+                                    ${aluno.getSobrenome()},
+                                    ${aluno.getDataNascimento()},
+                                    ${aluno.getEndereco},
+                                    ${aluno.getEmail},
+                                    ${aluno.getCelular})
                                     RETURNING id_aluno;`;
 
         // executa a query no banco e armazena a resposta
@@ -260,4 +263,7 @@ export class Aluno {
         return false;
     }
 }
+    getCpf() {
+        throw new Error("Method not implemented.");
+    }
 }
