@@ -29,7 +29,6 @@ router.post("/novo/aluno", AlunoController.novo);
 */ 
 // Rota para listar os emprestimo
 router.get("/lista/emprestimo", EmprestimoController.todos);
-router.post("/novo/emprestimo", EmprestimoController.novo);
 
 
 // exportando as rotas
