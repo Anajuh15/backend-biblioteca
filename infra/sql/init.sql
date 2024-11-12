@@ -2,13 +2,12 @@ CREATE SEQUENCE seq_ra START 1;
 
 CREATE TABLE Aluno (
     id_aluno SERIAL PRIMARY KEY,
-    ra VARCHAR (7) UNIQUE NOT NULL,
-    nome VARCHAR (80) NOT NULL,
-    sobrenome VARCHAR (80) NOT NULL,
-    data_nascimento DATE,
-    endereco VARCHAR (200),
-    email VARCHAR (80),
-    celular VARCHAR (20) NOT NULL
+    nome VARCHAR(50),
+    sobrenome VARCHAR(50), 
+    data_nascimento DATE, 
+    endereco VARCHAR(100), 
+    email VARCHAR(50), 
+    celular VARCHAR(20)
 );
 
 CREATE OR REPLACE FUNCTION gerar_ra() RETURNS TRIGGER AS $$

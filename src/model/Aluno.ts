@@ -234,11 +234,11 @@ export class Aluno {
         const queryInsertaluno = `INSERT INTO Aluno (nome, sobrenome, data_nascimento, endereco, email, celular)
                                     VALUES
                                     ('${aluno.getNome()}', 
-                                    ${aluno.getSobrenome()},
-                                    ${aluno.getDataNascimento()},
-                                    ${aluno.getEndereco},
-                                    ${aluno.getEmail},
-                                    ${aluno.getCelular})
+                                    '${aluno.getSobrenome()}',
+                                    '${aluno.getDataNascimento()}',
+                                    '${aluno.getEndereco}',
+                                    '${aluno.getEmail}',
+                                    '${aluno.getCelular}')
                                     RETURNING id_aluno;`;
 
         // executa a query no banco e armazena a resposta
@@ -246,7 +246,7 @@ export class Aluno {
 
         // verifica se a quantidade de linhas modificadas é diferente de 0
         if (respostaBD.rowCount != 0) {
-            console.log('aluno cadastrado com sucesso! ID do aluno: ${respostaBD.rows[0].id_aluno}');
+            console.log(`aluno cadastrado com sucesso! ID do aluno: ${respostaBD.rows[0].id_aluno}`);
             // true significa que o cadastro foi feito
             return true;
         }
@@ -263,7 +263,5 @@ export class Aluno {
         return false;
     }
 }
-    getCpf() {
-        throw new Error("Method not implemented.");
-    }
+   
 }
