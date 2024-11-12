@@ -7,7 +7,7 @@ interface AlunoDTO {
     dataNascimento: Date,
     endereco: string,
     email:string,
-    celular:string
+    celular:string,
 }
 
 /**
