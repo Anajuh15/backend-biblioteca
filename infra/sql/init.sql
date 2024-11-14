@@ -7,7 +7,7 @@ CREATE TABLE Aluno (
     data_nascimento DATE, 
     endereco VARCHAR(100), 
     email VARCHAR(50), 
-    celular VARCHAR(20)
+    celular VARCHAR(50)
 );
 
 CREATE OR REPLACE FUNCTION gerar_ra() RETURNS TRIGGER AS $$
