@@ -202,8 +202,8 @@ try {
                                 ('${emprestimo.getIdAluno()}', 
                                 '${emprestimo.getIdLivro()}',
                                 '${emprestimo.getIdEmprestimo()}',
-                                '${emprestimo.getDataEmprestimo}',
-                                '${emprestimo.getDataDevolucao}'), 
+                                '${emprestimo.getDataEmprestimo()}',
+                                '${emprestimo.getDataDevolucao()}'), 
                                   RETURNING id_emprestimo;`;
 
     // executa a query no banco e armazena a resposta

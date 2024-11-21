@@ -195,7 +195,7 @@ export class Aluno {
                 const novoaluno = new Aluno(
                     linha.nome,
                     linha.sobrenome,
-                    linha.dataNascimento,
+                    linha.data_nascimento,
                     linha.endereco,
                     linha.email,
                     linha.celular,);
@@ -236,9 +236,9 @@ export class Aluno {
                                     ('${aluno.getNome()}', 
                                     '${aluno.getSobrenome()}',
                                     '${aluno.getDataNascimento()}',
-                                    '${aluno.getEndereco}',
-                                    '${aluno.getEmail}',
-                                    '${aluno.getCelular}')
+                                    '${aluno.getEndereco()}',
+                                    '${aluno.getEmail()}',
+                                    '${aluno.getCelular()}')
                                     RETURNING id_aluno;`;
 
         // executa a query no banco e armazena a resposta

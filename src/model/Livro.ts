@@ -269,12 +269,12 @@ export class Livro {    /* Atributos */
                     linha.titulo,
                     linha.autor,
                     linha.editora,
-                    linha.anoPublicacao,
+                    linha.ano_publicacao,
                     linha.isbn,
-                    linha.quantTotal,
-                    linha.quantDisponivel,
-                    linha.valorAquisicao,
-                    linha.statusLivroEmprestado);
+                    linha.quant_total,
+                    linha.quant_disponivel,
+                    linha.valor_aquisicao,
+                    linha.status_livro_emprestado);
 
                 // atribui o ID objeto
                 novoLivro.setIdLivro(linha.id_livro);
@@ -318,9 +318,9 @@ export class Livro {    /* Atributos */
                                         '${livro.getEditora()}', 
                                         '${livro.getAnoPublicacao()}',
                                         '${livro.getIsbn()}',
-                                        '${livro.getQuantTotal()}',
-                                        '${livro.getQuantDisponivel()}',
-                                        '${livro.getValorAquisicao()}',
+                                         ${livro.getQuantTotal()},
+                                         ${livro.getQuantDisponivel()},
+                                         ${livro.getValorAquisicao()},
                                         '${livro.getStatusLivroEmprestado()}')
                                         RETURNING id_livro;`;
 
