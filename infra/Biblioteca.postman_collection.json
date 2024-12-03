@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "27dedded-37ed-4162-b036-06e4f4336da1",
+		"name": "Biblioteca",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38148723"
+	},
+	"item": [
+		{
+			"name": "rota principal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Livro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/lista/livros",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"lista",
+						"livros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Emprestimo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/lista/emprestimo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"lista",
+						"emprestimo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Aluno",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/lista/alunos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"lista",
+						"alunos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cadastro aluno",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n    \"nome\": \"Paul\",\r\n    \"sobrenome\": \"Cartney\",\r\n    \"dataNascimento\": \"2001-06-18\", \r\n    \"endereco\": \"Rua Beatles 1\",\r\n    \"email\": \"pmc@beatles.com\",\r\n    \"celular\": \"16998891234\"\r\n}\r\n\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/novo/aluno",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"novo",
+						"aluno"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cadastro livro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"titulo\": \"O Senhor dos Anéisssss\",\r\n        \"autor\": \"J.R.R. Tolkien\",\r\n        \"editora\": \"HarperCollins\",\r\n        \"anoPublicacao\": \"1954\",\r\n        \"isbn\": \"978-0007525546\",\r\n        \"quantTotal\": 10,\r\n        \"quantDisponivel\": 10,\r\n        \"valorAquisicao\": \"150.00\",\r\n        \"statusLivroEmprestado\": \"Disponível\"\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/novo/livro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"novo",
+						"livro"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
